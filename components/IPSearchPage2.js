@@ -17,8 +17,8 @@ const IPSearchPage2 = () => {
   const navigation = useNavigation();
 
   const onMap = () => {   
-    const initialLatFloat = parseFloat(result.latitude);
-    const initialLngFloat = parseFloat(result.longitude);  
+    const initialLatFloat = parseFloat(result.lat);
+    const initialLngFloat = parseFloat(result.lon);  
     
     navigation.navigate('MapInfo', {
       initialLat: initialLatFloat,
@@ -55,23 +55,19 @@ const IPSearchPage2 = () => {
         <View style={{ margin: 20 }}>
 
           <Text style={styles.text}>Інформація про IP-адресу:</Text>
-          {/* <Text>{"ip: " + result.ip}</Text> */}
-          <Text>{"country_name: " + result.country}</Text>
-          {/* <Text>{"state_prov: " + result.state_prov}</Text>
-          <Text>{"city: " + result.city}</Text>
-          <Text>{"latitude: " + result.latitude}</Text>
-          <Text>{"longitude: " + result.longitude}</Text>
-          <Text>{"time_zone: " + result.time_zone.current_time}</Text>
-          <Text>{"isp: " + result.isp}</Text>
-          <Text>{"currency: " + result.currency.code}</Text> */}
+          <Text style={styles.text2}>{"IP: " + result.query}</Text> 
+          <Text>{"Country: " + result.country}</Text>        
+          <Text>{"Region: " + result.region}</Text> 
+          <Text>{"Latitude: " + result.lat}</Text>
+          <Text>{"Longitude: " + result.lon}</Text>
+          <Text>{"Time zone: " + result.timezone}</Text>
+          <Text>{"Provider: " + result.isp}</Text>
+          <Text>{"currency: " + result.as}</Text> 
 
-          {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text>country_flag: </Text>
-          <Image source={{ uri: result.country_flag }} style={{ width: 30, height: 20 }} />
-          </View>
+         
           <View style={styles.container}>
           <Button  title="Показати на карті" onPress={onMap} />
-          </View> */}
+          </View> 
         </View>
       ) : null}
     </View>
@@ -89,6 +85,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     textAlign: 'center',
+    fontFamily: 'Lucida Handwriting'
+  },
+  text2: {
+   
+    fontFamily: 'Lucida Handwriting'
   }
  
 });

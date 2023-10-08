@@ -1,11 +1,11 @@
 import React from 'react';
-// import IPSearchPage from '../components/IPSearchPage';
-import IPSearchPage2 from '../components/IPSearchPage2';
+import IPSearchPage from '../components/IPSearchPage';
+
 
 
 function HomeScreen() { 
     return (       
-       <IPSearchPage2 />      
+       <IPSearchPage />      
     );
   }
   
