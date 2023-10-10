@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 import { API_KEY } from '@env';
-import * as Font from 'expo-font';
-
-
 
 const IPSearchPage = () => {
   const [ipAddress, setIpAddress] = useState('');
   const [result, setResult] = useState(null);
 
-
-  async function loadFonts() {
-    await Font.loadAsync({
-      'Pacifico-Regular': require('../assets/PTSerif-BoldItalic.ttf'),
-    });
-  }
-
-  useEffect(() => {
-    loadFonts(); 
-  }, []);
 
   const route = useRoute();
   
@@ -68,18 +55,18 @@ const IPSearchPage = () => {
         <View style={{ margin: 20 }}>
 
           <Text style={styles.text}>Інформація про IP-адресу:</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"IP: " + result.ip}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"Country: " + result.country_name}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"State prov: " + result.state_prov}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"City: " + result.city}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"Latitude: " + result.latitude}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"Longitude: " + result.longitude}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"Time zone: " + result.time_zone.current_time}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"IPS: " + result.isp}</Text>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>{"Currency: " + result.currency.code}</Text>
+          <Text>{"IP: " + result.ip}</Text>
+          <Text>{"Country: " + result.country_name}</Text>
+          <Text>{"State prov: " + result.state_prov}</Text>
+          <Text>{"City: " + result.city}</Text>
+          <Text>{"Latitude: " + result.latitude}</Text>
+          <Text>{"Longitude: " + result.longitude}</Text>
+          <Text>{"Time zone: " + result.time_zone.current_time}</Text>
+          <Text>{"IPS: " + result.isp}</Text>
+          <Text>{"Currency: " + result.currency.code}</Text>
 
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={{ fontFamily: 'PTSerif-BoldItalic', fontSize: 18 }}>Country flag: </Text>
+          <Text>Country flag: </Text>
           <Image source={{ uri: result.country_flag }} style={{ width: 30, height: 20 }} />
           </View>
           <View style={styles.container}>

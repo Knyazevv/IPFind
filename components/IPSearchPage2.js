@@ -55,7 +55,7 @@ const IPSearchPage2 = () => {
         <View style={{ margin: 20 }}>
 
           <Text style={styles.text}>Інформація про IP-адресу:</Text>
-          <Text style={styles.text2}>{"IP: " + result.query}</Text> 
+          <Text >{"IP: " + result.query}</Text> 
           <Text>{"Country: " + result.country}</Text>        
           <Text>{"Region: " + result.region}</Text> 
           <Text>{"Latitude: " + result.lat}</Text>
@@ -85,11 +85,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     textAlign: 'center',
-    fontFamily: 'Lucida Handwriting'
+    
   },
-  text2: {
-   
-    fontFamily: 'Lucida Handwriting'
-  }
+ 
  
 });
