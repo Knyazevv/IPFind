@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useRoute } from '@react-navigation/native';
-import { API_KEY } from '@env';
+
 
 const IPSearchPage2 = () => {
   const [ipAddress, setIpAddress] = useState('');
   const [result, setResult] = useState(null);
 
-
-  const route = useRoute();
+  const [searchedOnLoad, setSearchedOnLoad] = useState(false);
+  // const route = useRoute();
   
-  const initialLat = route.params?.initialLat;
-  const initialLng = route.params?.initialLng;
+  // const initialLat = route.params?.initialLat;
+  // const initialLng = route.params?.initialLng;
 
   const navigation = useNavigation();
 
@@ -41,11 +40,19 @@ const IPSearchPage2 = () => {
     });
   };
 
+
+  useEffect(() => {
+    if (!searchedOnLoad) {
+      searchIP();
+      setSearchedOnLoad(true);
+    }
+  }, []);
+
   return (
     <View style={{ margin: 10 }}>
-      <Text style={{ fontSize: 20, margin: 20 }}>Пошук за IP-адресою</Text>
+      <Text style={{ fontSize: 20, margin: 10, textAlign: 'center' }}>Пошук за IP-адресою</Text>
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, padding: 5 }}
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 1, padding: 5, textAlign: 'center' }}
         placeholder="Введіть IP-адресу"
         onChangeText={(text) => setIpAddress(text)}
         value={ipAddress}
@@ -62,14 +69,14 @@ const IPSearchPage2 = () => {
           <Text>{"Longitude: " + result.lon}</Text>
           <Text>{"Time zone: " + result.timezone}</Text>
           <Text>{"Provider: " + result.isp}</Text>
-          <Text>{"currency: " + result.as}</Text> 
+          <Text>{"Currency: " + result.as}</Text> 
 
          
-          <View style={styles.container}>
-          <Button  title="Показати на карті" onPress={onMap} />
-          </View> 
         </View>
       ) : null}
+          <View>
+          <Button  title="Показати на карті" onPress={onMap} />
+          </View> 
     </View>
   );
 };
@@ -81,6 +88,7 @@ export default IPSearchPage2;
 const styles = StyleSheet.create({
   container: {    
     padding: 10,
+    alignItems: 'center',
   },
   text: {
     fontSize: 20,
